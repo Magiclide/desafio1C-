@@ -1,0 +1,14 @@
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\bin\Debug\net8.0\bytebank_ATENDIMENTO.exe
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\bin\Debug\net8.0\bytebank_ATENDIMENTO.deps.json
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\bin\Debug\net8.0\bytebank_ATENDIMENTO.runtimeconfig.json
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\bin\Debug\net8.0\bytebank_ATENDIMENTO.dll
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\bin\Debug\net8.0\bytebank_ATENDIMENTO.pdb
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.AssemblyInfoInputs.cache
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.AssemblyInfo.cs
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.csproj.CoreCompileInputs.cache
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.dll
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\refint\bytebank_ATENDIMENTO.dll
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.pdb
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\bytebank_ATENDIMENTO.genruntimeconfig.cache
+C:\Users\ModalGR\Desktop\Array_Collections_C-CodigoInicial\Array_Collections_C-CodigoInicial\bytebank_ATENDIMENTO\obj\Debug\net8.0\ref\bytebank_ATENDIMENTO.dll
