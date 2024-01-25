@@ -6,41 +6,8 @@ using bytebank.Modelos.Conta;
 
 
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
-/*
-#region 
 
-
-int opcaoEscolha;
-ContaCorrente contaCorrente = new ContaCorrente(8776);
-ListaDeContaCorrente listaDeContas = new ListaDeContaCorrente();
-do{
-
-Console.Clear();
-Console.WriteLine("Painel do administrador");
-Console.WriteLine("Escolha uma opção: \n 1-ADICIONAR CONTA \n 2-REMOVER CONTA \n 3-BUSCAR CONTA");
- opcaoEscolha = int.Parse(Console.ReadLine());
-switch(opcaoEscolha){
-    case 1:
-        listaDeContas.Adicionar(contaCorrente);
-        break;
-    case 2:
-        listaDeContas.Remover(contaCorrente);
-        break;
-    case 3:
-        ContaCorrente contaProcurada=listaDeContas.Get(0);
-        Console.WriteLine(contaProcurada.Numero_agencia);
-        Thread.Sleep(2000);
-        break;
-
-    default:
-    Console.WriteLine("Encerrando...");
-    break;
-}
-}while(opcaoEscolha!=-1);
-#endregion
-
-*/
-List<ContaCorrente> list = new List<ContaCorrente>(){
+List<ContaCorrente> listaDeContas = new List<ContaCorrente>(){
   
    
 };
@@ -51,7 +18,7 @@ do{
 Console.Clear();
 Console.WriteLine("Painel de atendimento");
 Console.WriteLine("1-Cadastrar Conta");
-Console.WriteLine("2-Listar Contas");
+Console.WriteLine("2-Lista de Contas");
 Console.WriteLine("3-Remover Contas");
 Console.WriteLine("4-Ordenar Contas");
 Console.WriteLine("5-Pesquisar ordem de cadastro");
@@ -76,7 +43,7 @@ switch(opcao){
     CadastrarConta(contaACadastrar);
     break;
     case 2:
-    ListarContas();
+    listaDeContasarContas();
     break;
 
     case 3:
@@ -115,20 +82,20 @@ switch(opcao){
 
 ContaCorrente PesquisarConta(int id)
 {
-    return (ContaCorrente) list[id];
+    return (ContaCorrente) listaDeContas[id];
 }
 
 
 void OrdenarContas()
 {
-    list.Sort();
-    Console.WriteLine("Lista ordenada, mostrando elementos: ...");
-    ListarContas();
+    listaDeContas.Sort();
+    Console.WriteLine("Lista de contas ordenada, mostrando elementos: ...");
+    listaDeContasarContas();
 }
 ContaCorrente PesquisarPorCpf(string cpf){
     try{
 
-    return list.Where(conta=>conta.Titular.Cpf==cpf).FirstOrDefault();
+    return listaDeContas.Where(conta=>conta.Titular.Cpf==cpf).FirstOrDefault();
     }catch(ByteBankExceptionException ex){
         throw new ByteBankExceptionException("Mensagem de erro: "+ex);
     }
@@ -137,7 +104,7 @@ ContaCorrente PesquisarPorCpf(string cpf){
 void RemoverContas(string numConta)
 {
     ContaCorrente armazenaConta=null;
-    foreach(ContaCorrente conta in list){
+    foreach(ContaCorrente conta in listaDeContas){
         if(conta.Conta.Equals(numConta)){
             armazenaConta=conta;
             break;
@@ -147,16 +114,16 @@ void RemoverContas(string numConta)
         Console.WriteLine("Conta não encontrada...");
         return;
     }else{
-        list.Remove(armazenaConta);
+        listaDeContas.Remove(armazenaConta);
         Console.WriteLine("Conta deletada com sucesso...");
         return;
     }
 }
 
 
-void ListarContas()
+void listaDeContasarContas()
 {
-    foreach(ContaCorrente conta in list){
+    foreach(ContaCorrente conta in listaDeContas){
         Console.WriteLine("Conta: "+conta);
     }
     Thread.Sleep(3000);
@@ -165,5 +132,5 @@ void ListarContas()
 
 void CadastrarConta(ContaCorrente conta)
 {
-    list.Add(conta);
+    listaDeContas.Add(conta);
 }
