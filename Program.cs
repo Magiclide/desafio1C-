@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using System.Security.Cryptography;
+using bytebank.Exception;
 using bytebank.Modelos.Conta;
 
 
@@ -40,8 +41,8 @@ switch(opcaoEscolha){
 
 */
 List<ContaCorrente> list = new List<ContaCorrente>(){
-   new ContaCorrente(603),
-   new ContaCorrente(800)
+  
+   
 };
 
 int opcao;
@@ -53,47 +54,64 @@ Console.WriteLine("1-Cadastrar Conta");
 Console.WriteLine("2-Listar Contas");
 Console.WriteLine("3-Remover Contas");
 Console.WriteLine("4-Ordenar Contas");
-Console.WriteLine("5-Pesquisar Conta");
-Console.WriteLine("6-Sair do Sistema");
+Console.WriteLine("5-Pesquisar ordem de cadastro");
+Console.WriteLine("6-Pesquisar por cpf");
+Console.WriteLine("7-Sair do Sistema");
 
 Console.WriteLine("Digite a opção desejada");
  opcao = int.Parse(Console.ReadLine());
-ContaCorrente conta = new ContaCorrente(603);
-
+string numConta;
 switch(opcao){
     case 1:
-    CadastrarConta(conta);
+    Console.WriteLine("Digite o numero da agencia");
+    int agencia = int.Parse(Console.ReadLine());
+    ContaCorrente contaACadastrar = new ContaCorrente(agencia);
+    Console.WriteLine("Digite o numero da conta");
+    numConta = Console.ReadLine();
+    Console.WriteLine("Digite o cpf do titular");
+    string cpfCliente = Console.ReadLine();
+    Cliente cliente = new Cliente();
+    cliente.Cpf=cpfCliente;
+    contaACadastrar.Titular=cliente;
+    CadastrarConta(contaACadastrar);
     break;
     case 2:
     ListarContas();
     break;
 
     case 3:
-    RemoverContas(conta);
+    Console.WriteLine("Digite as informações da conta que quer remover...");
+    Console.WriteLine("Digite o numero da conta");
+     numConta = Console.ReadLine();
+    RemoverContas(numConta);
+    Thread.Sleep(3000);
     break;
 
     case 4:
     OrdenarContas();
+    Console.WriteLine("Contas ordenadas...");
     break;
  
     case 5:
-    Console.WriteLine(PesquisarConta(0));
+    Console.WriteLine("Digite o numero para pesquisarmos");
+    int numASerPesquisado = int.Parse(Console.ReadLine());
+    Console.WriteLine(PesquisarConta(numASerPesquisado));
     Thread.Sleep(3000);
     break;
 
-    case 7:
-    Console.WriteLine("Default");
-    var newList = PesquisarPorNumero("52790287899");
-    foreach(ContaCorrente conta2 in newList){
-        Console.WriteLine("Conta: "+conta2);
-        
-    }
+    case 6:
+    Console.WriteLine("Digite o cpf para buscarmos o cliente");
+
+    string cpf = Console.ReadLine();
+    ContaCorrente contaEncontrada = PesquisarPorCpf(cpf);
+    Console.WriteLine("Conta: "+contaEncontrada);
+    Thread.Sleep(2000); 
     break;
 
     default:
     break;
 }
-}while(opcao!=6);
+}while(opcao!=7);
 
 ContaCorrente PesquisarConta(int id)
 {
@@ -107,15 +125,32 @@ void OrdenarContas()
     Console.WriteLine("Lista ordenada, mostrando elementos: ...");
     ListarContas();
 }
-List<ContaCorrente> PesquisarPorNumero(string cpf){
-    return (from conta in list where conta.Titular.Cpf==cpf select conta).ToList();
+ContaCorrente PesquisarPorCpf(string cpf){
+    try{
+
+    return list.Where(conta=>conta.Titular.Cpf==cpf).FirstOrDefault();
+    }catch(ByteBankExceptionException ex){
+        throw new ByteBankExceptionException("Mensagem de erro: "+ex);
+    }
 }
 
-void RemoverContas(ContaCorrente conta)
+void RemoverContas(string numConta)
 {
-    list.RemoveAt(0);
-    Console.WriteLine($"Conta {conta} removida...");
-    Thread.Sleep(3000);
+    ContaCorrente armazenaConta=null;
+    foreach(ContaCorrente conta in list){
+        if(conta.Conta.Equals(numConta)){
+            armazenaConta=conta;
+            break;
+        }
+    }
+    if(armazenaConta==null){
+        Console.WriteLine("Conta não encontrada...");
+        return;
+    }else{
+        list.Remove(armazenaConta);
+        Console.WriteLine("Conta deletada com sucesso...");
+        return;
+    }
 }
 
 
