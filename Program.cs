@@ -30,18 +30,29 @@ Console.WriteLine("Digite a opção desejada");
 string numConta;
 switch(opcao){
     case 1:
+
     Console.WriteLine("Digite o numero da agencia");
     int agencia = int.Parse(Console.ReadLine());
+
+
     ContaCorrente contaACadastrar = new ContaCorrente(agencia);
+
     Console.WriteLine("Digite o numero da conta");
     numConta = Console.ReadLine();
+
     Console.WriteLine("Digite o cpf do titular");
     string cpfCliente = Console.ReadLine();
+
+
     Cliente cliente = new Cliente();
     cliente.Cpf=cpfCliente;
+
     contaACadastrar.Titular=cliente;
+
+
     CadastrarConta(contaACadastrar);
     break;
+
     case 2:
     listaDeContasarContas();
     break;
@@ -82,6 +93,10 @@ switch(opcao){
 
 ContaCorrente PesquisarConta(int id)
 {
+    if(id>listaDeContas.Count){
+        Console.WriteLine("Conta inexistente retornando nulo...");
+        return null;
+    }
     return (ContaCorrente) listaDeContas[id];
 }
 
@@ -96,6 +111,7 @@ ContaCorrente PesquisarPorCpf(string cpf){
     try{
 
     return listaDeContas.Where(conta=>conta.Titular.Cpf==cpf).FirstOrDefault();
+
     }catch(ByteBankExceptionException ex){
         throw new ByteBankExceptionException("Mensagem de erro: "+ex);
     }
