@@ -7,15 +7,12 @@ using bytebank.Modelos.Conta;
 
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
 
-List<ContaCorrente> listaDeContas = new List<ContaCorrente>(){
-  
-   
-};
+List<ContaCorrente> listaDeContas = new List<ContaCorrente>();
 
 int opcao;
 do{
 
-Console.Clear();
+//Console.Clear();
 Console.WriteLine("Painel de atendimento");
 Console.WriteLine("1-Cadastrar Conta");
 Console.WriteLine("2-Lista de Contas");
@@ -43,18 +40,19 @@ switch(opcao){
     Console.WriteLine("Digite o cpf do titular");
     string cpfCliente = Console.ReadLine();
 
-
+    cpfCliente=mascaraCpf(cpfCliente);
     Cliente cliente = new Cliente();
     cliente.Cpf=cpfCliente;
+    contaACadastrar.definirTitular(cliente);
+    
 
-    contaACadastrar.Titular=cliente;
-
-
+    Console.WriteLine("Cpf: "+cpfCliente);
+    Thread.Sleep(2000);
     CadastrarConta(contaACadastrar);
     break;
 
     case 2:
-    listaDeContasarContas();
+    listagemDeContas();
     break;
 
     case 3:
@@ -81,7 +79,9 @@ switch(opcao){
     Console.WriteLine("Digite o cpf para buscarmos o cliente");
 
     string cpf = Console.ReadLine();
+    cpf=mascaraCpf(cpf);
     ContaCorrente contaEncontrada = PesquisarPorCpf(cpf);
+
     Console.WriteLine("Conta: "+contaEncontrada);
     Thread.Sleep(2000); 
     break;
@@ -90,6 +90,15 @@ switch(opcao){
     break;
 }
 }while(opcao!=7);
+
+string mascaraCpf(string cpf){
+        try{
+        return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
+
+        }catch{
+            throw new ByteBankExceptionException("Seu cpf está no formato invalido, ou com caracteres");
+        }
+    }
 
 ContaCorrente PesquisarConta(int id)
 {
@@ -105,7 +114,7 @@ void OrdenarContas()
 {
     listaDeContas.Sort();
     Console.WriteLine("Lista de contas ordenada, mostrando elementos: ...");
-    listaDeContasarContas();
+    listagemDeContas();
 }
 ContaCorrente PesquisarPorCpf(string cpf){
     try{
@@ -137,7 +146,7 @@ void RemoverContas(string numConta)
 }
 
 
-void listaDeContasarContas()
+void listagemDeContas()
 {
     foreach(ContaCorrente conta in listaDeContas){
         Console.WriteLine("Conta: "+conta);

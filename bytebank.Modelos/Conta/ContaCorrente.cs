@@ -6,11 +6,19 @@
 
 		private string _conta;
 
-		private double saldo;
+		private double _saldo;
 
-		public Cliente Titular { get; set; }
+		private Cliente _titular { get; set; }
 
-		public string Nome_Agencia { get; set; }
+		private string _nome_Agencia;
+
+		public string Nome_Agencia{
+			get{
+				return _nome_Agencia;
+			}set{
+				_nome_Agencia=value;
+			}
+		}
 
 		public int Numero_agencia
 		{
@@ -25,6 +33,19 @@
 					_numero_agencia = value;
 				}
 			}
+		}
+		public Cliente Titular{
+
+			get{
+				return _titular;
+			}
+			set{
+				_titular=value;
+			}
+		}
+
+		public void definirTitular(Cliente cliente){
+			this.Titular=cliente;
 		}
 
 		public string Conta
@@ -46,13 +67,13 @@
 		{
 			get
 			{
-				return saldo;
+				return _saldo;
 			}
 			set
 			{
 				if (!(value < 0.0))
 				{
-					saldo = value;
+					_saldo = value;
 				}
 			}
 		}
@@ -61,7 +82,7 @@
 
 		public bool Sacar(double valor)
 		{
-			if (saldo < valor)
+			if (_saldo < valor)
 			{
 				return false;
 			}
@@ -69,7 +90,7 @@
 			{
 				return false;
 			}
-			saldo -= valor;
+			_saldo -= valor;
 			return true;
 		}
 
@@ -77,13 +98,13 @@
 		{
 			if (!(valor < 0.0))
 			{
-				saldo += valor;
+				_saldo += valor;
 			}
 		}
 
 		public bool Transferir(double valor, ContaCorrente destino)
 		{
-			if (saldo < valor)
+			if (_saldo < valor)
 			{
 				return false;
 			}
@@ -91,8 +112,8 @@
 			{
 				return false;
 			}
-			saldo -= valor;
-			destino.saldo += valor;
+			_saldo -= valor;
+			destino._saldo += valor;
 			return true;
 		}
 
@@ -100,11 +121,8 @@
 		{
 			Numero_agencia = numero_agencia;
 			Conta = Guid.NewGuid().ToString().Substring(0, 8);
-			Cliente cliente = new Cliente();
-			cliente.Cpf="52790287899";
-			cliente.Profissao="dev";
-			cliente.Nome="Enzo";
-			Titular = cliente;
+			
+			
 			TotalDeContasCriadas++;
 		}
 

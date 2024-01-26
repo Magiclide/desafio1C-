@@ -3,7 +3,17 @@
     public class Cliente
     {
 
-        public string Cpf { get; set; }
+        private string _Cpf;
+
+        public string Cpf{
+
+
+            get{
+                return _Cpf;
+            }set{
+                _Cpf=value;
+            }
+        }
 
         private string _nome;
         public string Nome
@@ -22,9 +32,18 @@
 
         }
         //public string Nome { get; set; }
-        public string Profissao { get; set; }
+        private string _profissao;
 
-        public static int TotalClientesCadastrados { get; set; }
+        public string Profissao{
+            get{
+                return _profissao;
+            }
+            set{
+                _profissao=value;
+            }
+        }
+
+        private static int TotalClientesCadastrados { get; set; }
 
         public Cliente()
         {
