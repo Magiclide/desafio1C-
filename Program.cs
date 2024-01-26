@@ -37,7 +37,7 @@ switch(opcao){
     Console.WriteLine("Digite o numero da conta");
     numConta = Console.ReadLine();
 
-    Console.WriteLine("Digite o cpf do titular");
+    Console.WriteLine("Digite o cpf do titular, utilize apenas numeros");
     string cpfCliente = Console.ReadLine();
 
     cpfCliente=mascaraCpf(cpfCliente);
@@ -76,7 +76,7 @@ switch(opcao){
     break;
 
     case 6:
-    Console.WriteLine("Digite o cpf para buscarmos o cliente");
+    Console.WriteLine("Digite o cpf apenas com numeros para buscarmos o cliente");
 
     string cpf = Console.ReadLine();
     cpf=mascaraCpf(cpf);
